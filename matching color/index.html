@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>색깔맞추기</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <div>
+        <h1 class="header">
+            <center>색깔 맞추기</center>
+        </h1>
+        <div class="row">
+            <div id="1" class="colorBox"></div>
+            <div id="2" class="colorBox"></div>
+            <div id="3" class="colorBox"></div>
+            <div id="4" class="colorBox"></div>
+            <div id="5" class="colorBox"></div>
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        var colorArr = new Array();
+        var arrLength = 5;
+        var getColorCount=0;
+
+        $(document).keydown(function (event) {
+            if (event.which == 38) {
+                alert('pushed 38 color=blue');
+                insertColor("blue");
+            }
+            if (event.which == 40) {
+                alert('pushed 40 color=red');
+                insertColor("red");
+            }
+            if (event.which == 37) {
+                alert('pushed 37 color=white');
+                insertColor("white");                
+            }
+            if (event.which == 39) {
+                alert('pushed 39 color=green');
+                insertColor("green");
+            }
+            if (event.which == 32) {
+                alert('refresh');
+                location.reload();
+            }            
+        });
+
+        function insertColor(color){
+            var audio = new Audio('sounds/Metal_Crash.mp3');
+                  audio.play();
+            if(getColorCount>=arrLength){
+                alert("선택 완료되었음");
+            }else{
+                getColorCount+=1;
+                document.getElementById(getColorCount).style.backgroundColor=color;
+            }
+        }
+    </script>
+</body>
+
+</html>
